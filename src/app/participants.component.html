@@ -1,0 +1,24 @@
+<style>
+  .updated {
+    background-color: lightgreen;
+  }
+</style>
+
+<div>
+  <div style="display: flex; justify-content: space-between; gap: 16px;">
+    <div>#</div>
+    <div>Name</div>
+    <div>Score</div>
+  </div>
+  <div [@listAnimation]="animationState">
+    <div *ngFor="let participant of participants; let i=index; trackBy: trackByParticipant;"
+      style="display: flex; justify-content: space-between; gap: 16px;"
+      [ngClass]="{ 'updated': participant.updated === true }">
+      <div>{{ i + 1 }}</div>
+      <div>{{ participant.name }}</div>
+      <div>{{ participant.score }}</div>
+    </div>
+  </div>
+</div>
+
+<button (click)="updateParticipants()" style="margin-top: 16px;">click</button>
